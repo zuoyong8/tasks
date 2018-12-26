@@ -31,7 +31,18 @@ class Datas(object):
 		except Exception,e:
 			raise Exception(e.message)
 
-	
+
+	def get_price(self,func_type,order_type,symbol):
+		price = 0.0
+		if order_type == "BUY":
+			if symbol=='BTC_GT':
+				price = round(random.uniform(1,10),5) if func_type == OrderFuncType.DEPTH else round(random.uniform(200,300),5)
+		else:
+			if symbol=='BTC_GT':
+				price = round(random.uniform(200,300),5) if func_type == OrderFuncType.DEPTH else round(random.uniform(1,10),5)
+			return price
+
+
 	def create_order(self,func_type,user_token,pay_pwd,order_type,symbol):
 	    '''
 		买卖订单
@@ -44,16 +55,7 @@ class Datas(object):
 	    '''
 	    tx_no = str(random.randint(100000000000000,999999999999999))
 	    uid = random.randint(1,1000)
-	    if order_type == "BUY":
-	    	if func_type == OrderFuncType.DEPTH:
-	    		price = round(random.uniform(1,10),5)
-	    	elif func_type == OrderFuncType.MACHINE:
-		    	price = round(random.uniform(200,300),5)
-	    else:
-		    if func_type == OrderFuncType.DEPTH:
-		        price = round(random.uniform(200,300),5)
-		    elif func_type == OrderFuncType.MACHINE:
-		    	price = round(random.uniform(1,10),5)
+	    price = get_price(func_type,order_type,symbol)
 	    num = round(random.uniform(1,10),2)
 	    headers = {'authorization':'token={0},pay-password={1}'.format(user_token,pay_pwd)}
 	    params = {'outOrderNo': tx_no,

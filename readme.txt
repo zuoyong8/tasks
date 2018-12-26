@@ -19,3 +19,10 @@
 
 //安装依赖包
 3、  pip install requirements.txt
+
+
+CREATE DATABASE IF NOT EXISTS CTE_market DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
+
+//Invalid default value for 'create_date'
+SHOW VARIABLES LIKE 'sql_mode';
+SET SQL_MODE='ALLOW_INVALID_DATES'
