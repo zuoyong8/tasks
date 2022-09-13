@@ -8,7 +8,7 @@ celery==4.2.1
 certifi==2018.11.29
 chardet==3.0.4
 configparser==3.5.0
-flower==0.9.2
+flower==1.2.0
 funcsigs==1.0.2
 futures==3.2.0
 idna==2.8
